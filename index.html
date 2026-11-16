@@ -1,0 +1,449 @@
+﻿<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8fa" />
+    <meta
+      name="description"
+      content="Học Xử lý ảnh số với trắc nghiệm, flashcard, lịch ôn cách quãng và sổ tay cá nhân."
+    />
+    <title>PixelLab — Học hiểu, nhớ lâu</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./questions.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Đến nội dung học</a>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./"
+          ><span class="brand-icon" aria-hidden="true">▦</span
+          ><span>PixelLab<small>KHÔNG GIAN TỰ HỌC</small></span></a
+        >
+        <div class="nav-label">GÓC HỌC TẬP</div>
+        <nav aria-label="Điều hướng chính">
+          <button class="nav-item active" data-view="learn">
+            <span aria-hidden="true">◫</span> Luyện tập
+            <span class="nav-dot"></span></button
+          ><button class="nav-item" data-view="flash">
+            <span aria-hidden="true">▱</span> Thẻ ghi nhớ</button
+          ><button class="nav-item" data-view="notebook">
+            <span aria-hidden="true">▤</span> Sổ tay của bạn
+            <span class="nav-count" id="savedCount">0</span></button
+          ><button class="nav-item" data-view="progress">
+            <span aria-hidden="true">▥</span> Tiến độ học tập
+          </button>
+        </nav>
+        <div class="sidebar-tip">
+          <span class="tip-icon" aria-hidden="true">✧</span
+          ><strong>Mỗi ngày một chút.</strong>
+          <p>
+            Thử tự nhớ câu trả lời trước khi xem lời giải. Một bước nhỏ cho buổi
+            học hôm nay.
+          </p>
+          <span class="tip-line"></span>
+        </div>
+        <div class="sidebar-bottom">
+          <span class="online-dot"></span> Không cần tài khoản<small
+            >Tiến độ lưu trên thiết bị này</small
+          >
+        </div>
+      </aside>
+      <div class="workspace">
+        <header class="topbar">
+          <div class="breadcrumb">
+            Không gian học tập <span>/</span>
+            <strong id="pageName">Luyện tập</strong>
+          </div>
+          <div class="topbar-right">
+            <span class="streak" id="streak">♨ 0 ngày liên tiếp</span
+            ><button
+              class="icon-button"
+              id="themeBtn"
+              aria-label="Chuyển sang giao diện tối"
+              title="Đổi giao diện"
+            >
+              ☾</button
+            ><span class="avatar" aria-label="Người tự học">B</span>
+          </div>
+        </header>
+        <main id="main" tabindex="-1">
+          <section class="hero">
+            <div>
+              <div class="eyebrow">
+                <span></span> MỘT CHÚT TẬP TRUNG, THÊM NHIỀU KIẾN THỨC
+              </div>
+              <h1>Học hiểu hôm nay.<br /><em>Nhớ lâu ngày mai.</em></h1>
+              <p>
+                Biến Xử lý ảnh số thành những bài học nhỏ, dễ nhớ.<br
+                  class="desktop-break"
+                />
+                Chọn một chủ đề và bắt đầu theo nhịp của bạn.
+              </p>
+              <div class="hero-meta">
+                <span class="mini-pixels" aria-hidden="true">▦</span
+                ><span><b id="bankCount">83</b> câu hỏi</span><i></i
+                ><span>12 chủ đề</span><i></i><span>Học theo cách của bạn</span>
+              </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="art-orbit"></div>
+              <div class="art-card art-back">
+                <span>INPUT</span>
+                <div class="pixel-grid">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i>
+                </div>
+              </div>
+              <div class="art-card art-front">
+                <span>KIẾN THỨC ĐƯỢC KẾT NỐI</span>
+                <div class="art-wave">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                  ><i></i><i></i>
+                </div>
+                <div class="art-caption">
+                  <span class="check-circle">✓</span> Hiểu rõ. Ghi nhớ.
+                </div>
+              </div>
+              <span class="art-spark spark-one">✳</span
+              ><span class="art-spark spark-two">+</span>
+            </div>
+          </section>
+          <section class="stats-grid" aria-label="Thống kê học tập">
+            <div class="stat-card">
+              <span class="stat-icon lavender">◫</span>
+              <div>
+                <span>Đã khám phá</span
+                ><strong id="attempted">0 <small>/ 83 câu</small></strong>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon green">◎</span>
+              <div>
+                <span>Độ chính xác trắc nghiệm</span
+                ><strong id="accuracy">—</strong>
+              </div>
+            </div>
+            <button class="stat-card stat-link" id="dueShortcut">
+              <span class="stat-icon amber">↻</span>
+              <div>
+                <span>Đến lúc ôn lại</span
+                ><strong id="dueCount">0 <small>câu hỏi</small></strong>
+              </div>
+              <span class="stat-arrow">↗</span>
+            </button>
+            <div class="stat-card">
+              <span class="stat-icon rose">⚑</span>
+              <div>
+                <span>Cần luyện thêm</span
+                ><strong id="wrongCount">0 <small>câu hỏi</small></strong>
+              </div>
+            </div>
+          </section>
+          <div id="studyView">
+            <div class="section-heading">
+              <div>
+                <h2 id="studyTitle">Một buổi học nhỏ</h2>
+                <p id="studySubtitle">
+                  Không cần vội. Hiểu từng câu, chắc từng kiến thức.
+                </p>
+              </div>
+              <span class="section-badge" id="studyBadge">LUYỆN TẬP</span>
+            </div>
+            <div class="study-layout">
+              <section class="card study-card" aria-label="Nội dung câu hỏi">
+                <div class="study-toolbar">
+                  <div class="segmented" aria-label="Hình thức học">
+                    <button id="quizTab" class="active" aria-pressed="true">
+                      ◫ Trắc nghiệm</button
+                    ><button id="flashTab" aria-pressed="false">
+                      ▱ Flashcard
+                    </button>
+                  </div>
+                  <button
+                    class="icon-button"
+                    id="bookmarkBtn"
+                    aria-label="Lưu câu hỏi"
+                    aria-pressed="false"
+                    title="Lưu câu hỏi"
+                  >
+                    ☆
+                  </button>
+                </div>
+                <div id="questionArea">
+                  <div class="question-meta">
+                    <span id="topicTag" class="tag"></span
+                    ><span id="sourceTag"></span><span id="counter"></span>
+                  </div>
+                  <div
+                    class="progress-track"
+                    id="progressTrack"
+                    role="progressbar"
+                    aria-label="Tiến độ buổi học"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                  >
+                    <div id="progressBar"></div>
+                  </div>
+                  <h3 id="questionTitle" tabindex="-1"></h3>
+                  <p class="question-hint" id="questionHint">
+                    Chọn một đáp án bạn cho là đúng.
+                  </p>
+                  <div class="options" id="options"></div>
+                  <div id="flashArea" hidden>
+                    <div class="recall-prompt" id="recallPrompt">
+                      <span aria-hidden="true">✧</span
+                      ><strong>Dừng một chút, thử nhớ xem.</strong>
+                      <p>
+                        Tự nói câu trả lời bằng lời của bạn rồi mới lật thẻ.
+                      </p>
+                    </div>
+                    <button class="btn primary reveal-button" id="revealBtn">
+                      Lật thẻ · Xem đáp án ↗
+                    </button>
+                    <div id="flashAnswer" class="flash-answer" hidden>
+                      <span class="eyebrow">ĐÁP ÁN & GIẢI THÍCH</span>
+                      <h4 id="flashAnswerText"></h4>
+                      <p id="flashExplain"></p>
+                      <p class="rating-label">Bạn nhớ được đến đâu?</p>
+                      <div class="rating-buttons">
+                        <button class="btn soft-danger" data-rating="again">
+                          Chưa nhớ <small>Ôn sau 10 phút</small></button
+                        ><button class="btn secondary" data-rating="hard">
+                          Hơi khó <small>Ôn lại sau 1 ngày</small></button
+                        ><button class="btn soft-success" data-rating="good">
+                          Đã nhớ
+                          <small id="goodInterval">Ôn lại sau 1 ngày</small>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <section
+                    id="feedback"
+                    class="feedback"
+                    hidden
+                    aria-live="polite"
+                  >
+                    <strong id="feedbackTitle"></strong>
+                    <p id="feedbackAnswer"></p>
+                    <p id="feedbackExplain"></p>
+                    <div id="reviewSchedule" class="review-schedule"></div>
+                  </section>
+                  <details class="personal-note" id="noteDetails">
+                    <summary>
+                      ✎ Ghi chú cách nhớ của bạn
+                      <span>Tự diễn giải để hiểu sâu hơn</span>
+                    </summary>
+                    <label class="sr-only" for="noteInput"
+                      >Ghi chú cho câu hỏi</label
+                    ><textarea
+                      id="noteInput"
+                      rows="3"
+                      maxlength="2000"
+                      placeholder="Từ khóa quan trọng, cách phân biệt hoặc điều mình hay nhầm…"
+                    ></textarea
+                    ><small id="noteStatus">Ghi chú được lưu tự động.</small>
+                  </details>
+                  <div class="question-footer">
+                    <span id="sessionScore">Buổi này: 0 / 0 đúng</span>
+                    <div>
+                      <button class="btn text-button" id="skipBtn">
+                        Để sau →</button
+                      ><button class="btn primary" id="nextBtn" hidden>
+                        Câu tiếp theo →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div id="emptyArea" class="empty-state" hidden>
+                  <span class="empty-symbol">✧</span>
+                  <h3 id="emptyTitle">Bạn đã hoàn thành buổi học!</h3>
+                  <p id="emptyText"></p>
+                  <div id="sessionSummary"></div>
+                  <button class="btn primary" id="againBtn">
+                    Bắt đầu lượt mới →</button
+                  ><button class="btn secondary" id="allQuestionsBtn">
+                    Về tất cả câu hỏi
+                  </button>
+                </div>
+                <div class="keyboard-hint">
+                  <span><kbd>1</kbd> – <kbd>4</kbd> chọn đáp án</span
+                  ><span><kbd>Enter</kbd> tiếp tục / lật thẻ</span>
+                </div>
+              </section>
+              <aside class="study-aside">
+                <section class="card setup-card">
+                  <div class="card-heading">
+                    <h3>Thiết kế buổi học</h3>
+                    <span aria-hidden="true">☷</span>
+                  </div>
+                  <label for="topicSelect">CHỦ ĐỀ</label
+                  ><select id="topicSelect">
+                    <option value="all">Tất cả chủ đề</option></select
+                  ><label for="sourceSelect">NGUỒN CÂU HỎI</label
+                  ><select id="sourceSelect">
+                    <option value="all">Kết hợp 2 tài liệu</option>
+                    <option value="PDF">Tài liệu PDF</option>
+                    <option value="Scribd">Tài liệu Scribd</option></select
+                  ><label for="sessionSize">ĐỘ DÀI BUỔI HỌC</label
+                  ><select id="sessionSize">
+                    <option value="10">10 câu · Từng bước nhỏ</option>
+                    <option value="20">20 câu · Tập trung hơn</option>
+                    <option value="all">Tất cả câu phù hợp</option>
+                  </select>
+                  <div class="field-label">BẠN MUỐN ÔN GÌ?</div>
+                  <div class="mode-list">
+                    <button
+                      class="mode active"
+                      data-mode="all"
+                      aria-pressed="true"
+                    >
+                      <span>◫ Tất cả câu hỏi</span
+                      ><b id="allModeCount">83</b></button
+                    ><button class="mode" data-mode="due" aria-pressed="false">
+                      <span>↻ Đến lịch ôn</span
+                      ><b id="dueModeCount">0</b></button
+                    ><button
+                      class="mode"
+                      data-mode="wrong"
+                      aria-pressed="false"
+                    >
+                      <span>⚑ Câu cần luyện thêm</span
+                      ><b id="wrongModeCount">0</b></button
+                    ><button
+                      class="mode"
+                      data-mode="saved"
+                      aria-pressed="false"
+                    >
+                      <span>☆ Câu đã lưu</span
+                      ><b id="savedModeCount">0</b></button
+                    ><button
+                      class="mode"
+                      data-mode="unseen"
+                      aria-pressed="false"
+                    >
+                      <span>✧ Chưa khám phá</span><b id="unseenModeCount">83</b>
+                    </button>
+                  </div>
+                  <button class="btn secondary restart-button" id="restartBtn">
+                    ↻ Trộn & bắt đầu lại
+                  </button>
+                </section>
+                <section class="daily-card">
+                  <div class="card-heading">
+                    <h3>Mục tiêu hôm nay</h3>
+                    <span aria-hidden="true">☀</span>
+                  </div>
+                  <p>Giữ nhịp học, từng chút một.</p>
+                  <div class="daily-numbers">
+                    <strong id="dailyCount">0 <small>/ 10 câu</small></strong
+                    ><label for="dailyGoal" class="sr-only"
+                      >Mục tiêu số câu mỗi ngày</label
+                    ><select id="dailyGoal">
+                      <option value="5">5 câu / ngày</option>
+                      <option value="10" selected>10 câu / ngày</option>
+                      <option value="20">20 câu / ngày</option>
+                    </select>
+                  </div>
+                  <div class="progress-track"><div id="dailyBar"></div></div>
+                  <small id="dailyMessage"
+                    >Một câu đầu tiên là một khởi đầu tốt.</small
+                  >
+                </section>
+                <div class="study-tip">
+                  <span>✧</span>
+                  <p>
+                    <strong>Học một lần, ôn nhiều lần.</strong><br />Câu khó sẽ
+                    trở lại sớm hơn. Câu đã nhớ được giãn lịch ôn để bạn tiếp
+                    tục luyện.
+                  </p>
+                </div>
+              </aside>
+            </div>
+          </div>
+          <section id="notebookView" hidden>
+            <div class="section-heading">
+              <div>
+                <h2>Sổ tay của bạn</h2>
+                <p>Những câu đáng nhớ và cách hiểu của riêng bạn.</p>
+              </div>
+            </div>
+            <div class="notebook-tools">
+              <label class="search-box"
+                ><span aria-hidden="true">⌕</span
+                ><input
+                  id="noteSearch"
+                  type="search"
+                  placeholder="Tìm câu hỏi, ghi chú hoặc chủ đề…"
+                  aria-label="Tìm trong sổ tay" /></label
+              ><button class="btn primary" id="practiceSaved">
+                Ôn câu đã lưu →
+              </button>
+            </div>
+            <div id="notebookList" class="notebook-list"></div>
+          </section>
+          <section id="progressView" hidden>
+            <div class="section-heading">
+              <div>
+                <h2>Mỗi bước đều được ghi nhận</h2>
+                <p>Nhìn lại điều đã học và chọn chủ đề cần tập trung.</p>
+              </div>
+              <button class="btn secondary" id="exportBtn">
+                ↓ Sao lưu tiến độ
+              </button>
+            </div>
+            <div class="progress-layout">
+              <section class="card topic-progress">
+                <h3>Kiến thức theo chủ đề</h3>
+                <p class="muted">
+                  Thanh tiến độ hiển thị số câu đã học. Tỷ lệ đúng dựa trên đáp
+                  án trắc nghiệm gần nhất.
+                </p>
+                <div id="topicProgress"></div>
+              </section>
+              <div>
+                <section class="card activity-card">
+                  <h3>7 ngày gần đây</h3>
+                  <div id="activityChart" class="activity-chart"></div>
+                  <p class="muted">Số câu khác nhau đã luyện mỗi ngày.</p>
+                </section>
+                <section class="card data-card">
+                  <h3>Dữ liệu học tập</h3>
+                  <p>
+                    Tiến độ chỉ lưu trong trình duyệt này. Sao lưu để chuyển
+                    thiết bị hoặc giữ lại trước khi xóa dữ liệu trình duyệt.
+                  </p>
+                  <label
+                    class="btn secondary import-label"
+                    for="importFile"
+                    tabindex="0"
+                    >↑ Khôi phục từ bản sao lưu</label
+                  ><input
+                    id="importFile"
+                    type="file"
+                    accept="application/json,.json"
+                    hidden
+                  /><button class="btn text-button danger" id="resetBtn">
+                    Xóa toàn bộ tiến độ
+                  </button>
+                </section>
+              </div>
+            </div>
+          </section>
+          <footer>
+            <span
+              ><span class="footer-logo">▦</span> PixelLab
+              <span class="footer-divider">/</span> Hành trình hiểu từng điểm
+              ảnh.</span
+            ><span>Tài liệu ôn tập độc lập · Không phải đáp án chính thức</span>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <noscript><p>Vui lòng bật JavaScript để sử dụng PixelLab.</p></noscript>
+  </body>
+</html>
