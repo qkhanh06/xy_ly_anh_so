@@ -1,4 +1,4 @@
-﻿# PixelLab — Học hiểu, nhớ lâu
+# PixelLab — Học hiểu, nhớ lâu
 
 Website tự học **Xử lý ảnh số** bằng HTML, CSS và JavaScript thuần. Gồm **83 câu hỏi, 12 chủ đề**, không cần tài khoản, API key hoặc backend.
 
@@ -64,6 +64,8 @@ playwright-cli eval 'window.__testResult'
 
 Bộ kiểm thử dùng hồ sơ trình duyệt kiểm thử, xóa dữ liệu trên origin localhost trong hồ sơ đó, kiểm tra trả lời đúng/sai, lịch ôn, flashcard, ghi chú an toàn, tìm kiếm, bộ lọc, mục tiêu, lưu giao diện, xuất/nhập, dữ liệu cũ và tràn ngang ở các độ rộng 320/390/768/1440px. Đợi quá trình chạy hoàn tất rồi đọc `window.__testResult` nếu CLI tạm trả về khi gặp hộp thoại xác nhận.
 
+Kiểm tra bổ sung lịch ôn 3–7–14–30 ngày, phím tắt và lỗi lưu trữ bằng `playwright-cli run-code --filename=tests/edge-checks.js`, rồi đọc `window.__edgeResult`. Bài kiểm tra này mô phỏng trình duyệt chặn lưu trữ; đóng phiên kiểm thử bằng `playwright-cli close` sau khi chạy.
+
 ## Nguồn biên soạn
 
 - PDF do người sử dụng cung cấp: _Trắc nghiệm về Xử Lý Ảnh — Môn Học CNTT101_, 35 trang.
@@ -74,5 +76,3 @@ Câu hỏi đã được biên soạn/diễn đạt lại thành bộ luyện t�
 ## Quyền riêng tư và giới hạn
 
 Tiến độ, ghi chú và câu đã lưu nằm trong `localStorage` trên thiết bị; không gửi lên máy chủ. Xóa dữ liệu trình duyệt sẽ làm mất tiến độ nếu chưa sao lưu. Nếu trình duyệt chặn lưu trữ, ứng dụng thông báo và vẫn cho học trong phiên hiện tại. Google Fonts cung cấp phông chữ; khi không tải được, website dùng phông hệ thống. Nội dung câu hỏi được giữ từ bộ ban đầu, chưa được đối chiếu lại với tài liệu nguồn trong lần nâng cấp giao diện này.
-
-Kiểm tra bổ sung lịch ôn 3–7–14–30 ngày, phím tắt và lỗi lưu trữ bằng `playwright-cli run-code --filename=tests/edge-checks.js`, rồi đọc `window.__edgeResult`. Bài kiểm tra này mô phỏng trình duyệt chặn lưu trữ; đóng phiên kiểm thử bằng `playwright-cli close` sau khi chạy.
